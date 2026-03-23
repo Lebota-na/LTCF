@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Letsile Tebogo Charitable Foundation</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --coral: #E8806A;
+    --pink: #D63B6E;
+    --deep: #1a0a10;
+    --cream: #fdf6f0;
+    --light: #fff5f8;
+    --mid: #f0d0d8;
+    --text: #2a1520;
+    --muted: #7a5060;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(253,246,240,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(214,59,110,0.1);
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+
+  .nav-logo-icon {
+    height: 52px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .nav-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text);
+  }
+
+  .nav-logo-text span {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--pink);
+  }
+
+  .nav-links {
+    display: flex; align-items: center; gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--pink); }
+
+  .nav-cta {
+    background: var(--pink);
+    color: white !important;
+    padding: 0.5rem 1.4rem;
+    border-radius: 50px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--coral) !important; color: white !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 6rem 4rem 6rem 4rem;
+    position: relative;
+  }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--mid);
+    color: var(--pink);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 2rem;
+    width: fit-content;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--pink);
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 4vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--deep);
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--pink);
+  }
+
+  .hero-subtitle {
+    margin-top: 1.5rem;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 480px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-pillars {
+    display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .pillar {
+    background: white;
+    border: 1px solid var(--mid);
+    border-radius: 12px;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text);
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+
+  .pillar-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+  }
+
+  .pillar-dot.community { background: var(--coral); }
+  .pillar-dot.advocacy { background: var(--pink); }
+  .pillar-dot.mentorship { background: #c0395a; }
+
+  .hero-btns {
+    display: flex; gap: 1rem; margin-top: 2.5rem; align-items: center;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+
+  .btn-primary {
+    background: var(--pink);
+    color: white;
+    padding: 0.9rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(214,59,110,0.3);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(214,59,110,0.4);
+  }
+
+  .btn-ghost {
+    color: var(--pink);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: flex; align-items: center; gap: 0.4rem;
+    transition: gap 0.2s;
+  }
+
+  .btn-ghost:hover { gap: 0.7rem; }
+
+  .hero-right {
+    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #2a0e1e 0%, #1a0a10 100%);
+  }
+
+  .hero-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.75;
+    mix-blend-mode: luminosity;
+  }
+
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(214,59,110,0.3) 0%, rgba(232,128,106,0.2) 100%);
+  }
+
+  .hero-stat-card {
+    position: absolute; bottom: 3rem; left: 2rem;
+    background: white;
+    border-radius: 16px;
+    padding: 1.2rem 1.8rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  }
+
+  .hero-stat-card .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--pink);
+  }
+
+  .hero-stat-card .label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* MISSION STRIP */
+  .mission-strip {
+    background: var(--pink);
+    color: white;
+    display: flex;
+    overflow: hidden;
+    padding: 1.2rem 0;
+  }
+
+  .strip-inner {
+    display: flex; gap: 4rem; align-items: center;
+    animation: marquee 20s linear infinite;
+    white-space: nowrap;
+  }
+
+  .strip-item {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: flex; align-items: center; gap: 1rem;
+  }
+
+  .strip-item::before {
+    content: '✦';
+    opacity: 0.6;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ABOUT */
+  .about {
+    padding: 8rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .about-images {
+    position: relative; height: 520px;
+  }
+
+  .about-img-main {
+    position: absolute; top: 0; left: 0;
+    width: 72%; height: 85%;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+  }
+
+  .about-img-secondary {
+    position: absolute; bottom: 0; right: 0;
+    width: 58%; height: 55%;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 6px solid var(--cream);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  }
+
+  .about-badge {
+    position: absolute; top: 2.5rem; right: 1rem;
+    background: var(--pink);
+    color: white;
+    border-radius: 16px;
+    padding: 1rem 1.4rem;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .about-badge .big { font-size: 2rem; font-weight: 900; display: block; }
+  .about-badge .small { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; }
+
+  .about-content { padding: 2rem 0; }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--deep);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--pink); }
+
+  .about-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .about-quote {
+    border-left: 3px solid var(--pink);
+    padding: 1rem 1.5rem;
+    background: white;
+    border-radius: 0 12px 12px 0;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--text);
+    font-size: 1.05rem;
+    margin: 2rem 0;
+  }
+
+  /* PILLARS */
+  .pillars-section {
+    padding: 8rem 4rem;
+    background: var(--deep);
+    color: white;
+  }
+
+  .pillars-header { text-align: center; margin-bottom: 5rem; }
+
+  .pillars-header .section-label { color: var(--coral); }
+
+  .pillars-header .section-title { color: white; }
+  .pillars-header .section-title em { color: var(--coral); }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .pillar-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 3rem 2.5rem;
+    transition: transform 0.3s, background 0.3s;
+  }
+
+  .pillar-card:hover {
+    transform: translateY(-8px);
+    background: rgba(214,59,110,0.15);
+    border-color: rgba(214,59,110,0.3);
+  }
+
+  .pillar-icon {
+    width: 60px; height: 60px;
+    border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .pillar-icon.c { background: rgba(232,128,106,0.2); }
+  .pillar-icon.a { background: rgba(214,59,110,0.2); }
+  .pillar-icon.m { background: rgba(192,57,90,0.2); }
+
+  .pillar-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+  }
+
+  .pillar-card p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* PROJECTS */
+  .projects-section {
+    padding: 8rem 4rem;
+    background: var(--light);
+  }
+
+  .projects-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 4rem;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 2rem;
+  }
+
+  .project-card-main {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 10px 50px rgba(0,0,0,0.08);
+  }
+
+  .project-card-main .project-img {
+    width: 100%; height: 300px;
+    object-fit: cover;
+  }
+
+  .project-info { padding: 2.5rem; }
+
+  .project-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(214,59,110,0.1);
+    color: var(--pink);
+    font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.3rem 0.9rem; border-radius: 50px;
+    margin-bottom: 1rem;
+  }
+
+  .project-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--pink);
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  .project-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--deep);
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+  }
+
+  .project-info p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .project-meta {
+    display: flex; gap: 1.5rem;
+    border-top: 1px solid var(--mid);
+    padding-top: 1.5rem;
+  }
+
+  .meta-item { font-size: 0.8rem; }
+  .meta-label { color: var(--muted); display: block; margin-bottom: 0.2rem; }
+  .meta-value { font-weight: 600; color: var(--text); }
+
+  .project-sidebar {
+    display: flex; flex-direction: column; gap: 2rem;
+  }
+
+  .side-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+    flex: 1;
+  }
+
+  .side-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--deep);
+    margin-bottom: 0.8rem;
+  }
+
+  .side-card p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+
+  .side-card.accent {
+    background: linear-gradient(135deg, var(--pink) 0%, var(--coral) 100%);
+    color: white;
+  }
+
+  .side-card.accent h4 { color: white; }
+  .side-card.accent p { color: rgba(255,255,255,0.85); }
+
+  .side-card.accent .btn-white {
+    display: inline-block;
+    margin-top: 1.2rem;
+    background: white;
+    color: var(--pink);
+    padding: 0.6rem 1.4rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s;
+  }
+
+  .side-card.accent .btn-white:hover { transform: scale(1.03); }
+
+  /* GALLERY */
+  .gallery-section {
+    padding: 8rem 4rem;
+  }
+
+  .gallery-header { text-align: center; margin-bottom: 4rem; }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .gallery-item {
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    position: relative;
+  }
+
+  .gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+
+  .gallery-item:hover img { transform: scale(1.05); }
+
+  .gallery-item.tall { grid-row: span 2; aspect-ratio: unset; }
+
+  .gallery-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(26,10,16,0.7) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex; align-items: flex-end;
+    padding: 1.5rem;
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+  /* CONTACT */
+  .contact-section {
+    padding: 8rem 4rem;
+    background: var(--deep);
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .contact-section .section-label { color: var(--coral); }
+  .contact-section .section-title { color: white; }
+  .contact-section .section-title em { color: var(--coral); }
+
+  .contact-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.6);
+    margin: 1.5rem 0 2.5rem;
+  }
+
+  .contact-detail {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .contact-detail .icon {
+    width: 44px; height: 44px;
+    background: rgba(214,59,110,0.2);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+  }
+
+  .contact-detail .detail-text { font-size: 0.9rem; }
+  .contact-detail .detail-label { color: rgba(255,255,255,0.4); font-size: 0.75rem; margin-bottom: 0.1rem; }
+  .contact-detail .detail-value { color: white; font-weight: 500; }
+
+  .contact-form { background: rgba(255,255,255,0.05); border-radius: 24px; padding: 3rem; border: 1px solid rgba(255,255,255,0.08); }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-group { margin-bottom: 1.5rem; }
+
+  .form-group label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 0.6rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 0.9rem 1.2rem;
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: var(--pink);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 120px; }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+
+  /* STORIES */
+  .stories-section {
+    padding: 8rem 4rem;
+    background: var(--cream);
+  }
+
+  .stories-header { text-align: center; margin-bottom: 4rem; }
+
+  .stories-header .section-title em { color: var(--pink); }
+
+  .stories-intro {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto 3.5rem;
+    line-height: 1.7;
+  }
+
+  .story-form-card {
+    background: white;
+    border-radius: 24px;
+    padding: 3rem;
+    box-shadow: 0 10px 50px rgba(214,59,110,0.08);
+    border: 1px solid var(--mid);
+    max-width: 700px;
+    margin: 0 auto 4rem;
+  }
+
+  .story-form-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--deep);
+    margin-bottom: 1.5rem;
+  }
+
+  .story-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .story-form-group { margin-bottom: 1.2rem; }
+
+  .story-form-group label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .story-form-group input,
+  .story-form-group textarea,
+  .story-form-group select {
+    width: 100%;
+    background: var(--light);
+    border: 1.5px solid var(--mid);
+    border-radius: 12px;
+    padding: 0.85rem 1.1rem;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+
+  .story-form-group input:focus,
+  .story-form-group textarea:focus,
+  .story-form-group select:focus {
+    border-color: var(--pink);
+    background: white;
+  }
+
+  .story-form-group textarea { resize: vertical; min-height: 110px; }
+
+  .story-submit {
+    width: 100%;
+    background: var(--pink);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(214,59,110,0.3);
+    margin-top: 0.5rem;
+  }
+
+  .story-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(214,59,110,0.4);
+  }
+
+  .story-submit:disabled {
+    opacity: 0.6; cursor: not-allowed; transform: none;
+  }
+
+  .stories-wall { max-width: 900px; margin: 0 auto; }
+
+  .stories-wall-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+
+  .stories-wall-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--deep);
+  }
+
+  .stories-count {
+    background: var(--mid);
+    color: var(--pink);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.3rem 0.9rem;
+    border-radius: 50px;
+  }
+
+  .stories-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .story-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid var(--mid);
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: fadeUp 0.4s ease both;
+  }
+
+  .story-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(214,59,110,0.1);
+  }
+
+  .story-card-top {
+    display: flex; align-items: center; gap: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .story-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .story-meta { flex: 1; }
+
+  .story-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+
+  .story-tag-label {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 0.1rem;
+  }
+
+  .story-quote-mark {
+    position: absolute; top: 1.5rem; right: 1.8rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    color: var(--mid);
+    line-height: 1;
+  }
+
+  .story-text {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .story-date {
+    font-size: 0.72rem;
+    color: var(--mid);
+    margin-top: 1rem;
+    font-weight: 500;
+  }
+
+  .stories-loading {
+    text-align: center;
+    color: var(--muted);
+    padding: 3rem;
+    font-size: 0.9rem;
+  }
+
+  .stories-empty {
+    text-align: center;
+    padding: 3rem;
+    color: var(--muted);
+    background: white;
+    border-radius: 20px;
+    border: 1px dashed var(--mid);
+    grid-column: span 2;
+  }
+
+  .stories-empty p { font-size: 0.9rem; margin-top: 0.5rem; }
+
+  .toast {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+    background: var(--deep);
+    color: white;
+    padding: 1rem 1.8rem;
+    border-radius: 16px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    transform: translateY(80px);
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
+  .toast.show { transform: translateY(0); opacity: 1; }
+  .toast.success { border-left: 4px solid var(--pink); }
+  .toast.error { border-left: 4px solid var(--coral); }
+
+  @media (max-width: 768px) {
+    .stories-section { padding: 5rem 1.5rem; }
+    .story-form-card { padding: 2rem 1.5rem; }
+    .story-form-row { grid-template-columns: 1fr; }
+    .stories-grid { grid-template-columns: 1fr; }
+    .stories-empty { grid-column: span 1; }
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0f0508;
+    color: rgba(255,255,255,0.5);
+    padding: 3rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.85rem;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: white;
+    font-weight: 700;
+  }
+
+  .footer-logo span {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-top: 0.2rem;
+  }
+
+  .footer-links { display: flex; gap: 2rem; }
+  .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: white; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 5rem 1.5rem 3rem; }
+    .hero-right { height: 300px; }
+    .about, .pillars-grid, .projects-grid, .gallery-grid, .contact-section { grid-template-columns: 1fr; gap: 3rem; }
+    .about, .pillars-section, .projects-section, .gallery-section, .contact-section { padding: 5rem 1.5rem; }
+    .projects-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img class="nav-logo-icon" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/7QCEUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAGgcAigAYkZCTUQwYTAwMGEwYTAyMDAwMGZlMGEwMDAwN2MxMDAwMDAyNDEyMDAwMGRhMTIwMDAwOWQxNzAwMDBkYTIxMDAwMDE5MjUwMDAwNjgyNjAwMDAyNzI3MDAwMDVlMzQwMDAwAP/bAIQABQYGCwgLCwsLCw0LCwsNDg4NDQ4ODw0ODg4NDxAQEBEREBAQEA8TEhMPEBETFBQTERMWFhYTFhUVFhkWGRYWEgEFBQUKBwoICQkICwgKCAsKCgkJCgoMCQoJCgkMDQsKCwsKCw0MCwsICwsMDAwNDQwMDQoLCg0MDQ0MExQTExOc/8IAEQgCDgIOAwEiAAIRAQMRAf/EANUAAQEBAQEBAQEAAAAAAAAAAAABAwIGBQQHEAACAgECBQMEAgMBAAAAAAAAEQIDAQQgBRASMFATFEAhIjEyFTMjNERgEQABAgMDBwoCCAQHAAAAAAABAAIREiEDMVEEECJBYXGRBRMgMkBQgaGxwUJSI2JygILR4fAUM5KyMENTY6Ci0hIBAAIBAQUIAwADAAAAAAAAAQARITEQQVFhcTBAUIGRobHwIMHRgOHxEwACAQIEBQUBAQEAAAAAAAABEQAQICExQWEwUXGRoUCBscHw4dHx/9oADAMBAAIBAwEAAAH3tlFgFABQAUAoFlBQCgVCgoKBXZzp3ocad6HGloKEoAIXmcHXHHB3nzyWOiXrs5777Oe+qSqebSiwLKALKAUhbBQKhbKAVKUCyg6J31qcad6nGnXRKoSgAhZODrjnM7445LyC3Q5670ONOujnoFgFPNWUAFABQBZRZQBQqUFAFC3rQ4171ONO+znsFgAVCyQvPHB1xxwdc8inZzp1ocd99nHdACoAKh5xKLBZQsCgBUosFAqHSUFFanGmmpnr3oc92iwALBUheeODvPjg7z5hTonXfZz332c92gAogAVAKebAAUACiwVKLKAVKU7OdO9TjXvUz16ooAACFnOZ3nxwd58cnXLonV1ONOtDjTrolAABYLAVAAU82lAKlCUoAKQoLZR13qca6anGnfZz0oSgABzwdccZneefB3zAvXZzp3ocaddnPVAAACwWAAAKQHnAAVBbAKAVKOutTPXTYz171OO6FlEUEKnB1xxmaZ55nfHMKvZz33qcad9nPdoAAAAAABZYAAAecSgCgSiyitDnXvYz200OdOhKApAVOTrnjI0zzzO8+IVOyddanOnehxp1RYKAQoAAALAAqAAUQPNqABRZ2c96bmW/exnr30c9AAAIWc5GmeeR3nxmd8yjrrU4170ONeuidAKAJQAAAAAABYBYALB5xKLOidd7GW/exxrp2c9oUAABzmaZcZGmWWZpxyFupxr3qca9aHPagABYLBQCFAAAAAAAAsAHm71sZ7abGe2mhxpQUAJQTg7z4yNMssjXLiFXs5071ONu9DjToKAAAACwChKJQAAAAAAAAB8jfvYz16oBUFAODvjjI0yzxNcc+Trl0TvvYz271ONeuiWwqUJQAAAABQllBCgAAAAAAAAy6oELApBOcjTLPE1xy4O+OYdPOfLx/X6H8v5P04fuaNOdOv2fjvXHofqeCmv5PfPh/c3/AA1FigAAAAsAoShKAEoAAAAAABylJYLJmd55YmuOeRplzC24S5+X01/F9vjbT7eX6Pj/AEfTbfp+b8HT7TT8/wAL8vp7OvFvXfHx/Z8LTTnnb2Ongfd/s+N0O8qlAAAFgsACkKQpCkKAAAAADg4OuM8TXHLI0yz5OueuznTTYz+V9/bjXwG3pu/yfXv79Pk/t+V85/OeZ6L+xft+R9frzHy/x/v8t+b93ovs/wA8/oWv5/w+d9j+DPbzP0c/Tc6Vh+j9XzRibH5D9bjsPn9H7j85+gCwD4p9qoWKJQAABKAAh+bLLE1xy4O+HRO+tzPbTYz177J0hSF856PzfX7P5vjtll7f+4U7/nmHjfZeN/H9f8X9E/nnv+8trH6fm89ynyf18cHwfofo/SfB/dr+w+J9DfY4/H9TI+V+b7X5jDP6mZ+Hf8H2R9DHYWCoCwqUJQAQqUA+BnKL1sZ7abmW2mhx3aSyiUSg+B978nX6P4/+f9WeXv8A+0beb9J3/Ovw+U+38P8AB9r839D8N7nf8RZ+j8FgfO8zn7o86+l5I99f596c+08F9s9F8Xzv0T6f2P536k+3l4z65t9v+cfaP2+g8hD2DxPtixSALAoQCwssFDz2um5ntpoc6dBZQlJUKQUBD+U/J9/4C+8+/wD0z+Ie7x+H1gz/AAfo+t6n8f7Po+cDvJYPH/U+38U89v6zk89h6qngvqfe0Pw/M9VweW+p9bE8X9H7255R6X9B5v53tujxXvfn/QAAAALAqCoLJwfn27pOoBSWAUlgsUJQlMv5P/W/CvteO/V+S5+u9f8AV8D/AE3HzP2h+rzoFgeA/d+T9R938f4f1HoPzeT0PT8ebxPRfU8Xqftv6fnH0fqeP3PzfV+fses+R8r6x9T5nxv0npN/H+wAAAKgHB1zxkaZ55n0oCwAWBUpAVBXivjfn/f/AEH4XwP1Zfqz1XD9/wAb5H9G2/br/M8/qfP1+x6T1v8ALuHxv7ff4d+x87+yvEe3vyfHeyi5fg8l7ynlvk++HhfoeqHlv0ehHi9fX08N+r148Zv6wfC+T7OHn/0/YHmfTAAAOTrnjM0y4zO884WTo+oBUAABSFEU8x8f2uX4/r+Q19h+g8z9r9rf8Ia/mx8n7Jf1fyH8X9p+Y+5/KH9F/HP3fl978D77yoPygAAAKgUSyhAoEoIWc5nefGRpnnwdcAvWhxr3obwFgAWAsAKQVCkKQqUAAAAAsAACwAKlJYLLBULJwd58ZGmWeZ3xyFaHOnepnr3ocd2nIAAFgFJZRFJQRRKAJQAAEKAAAAAAUllIcl54yNMs8jTPiFjs5071M9e9DnvsKhSEAsAFSksCwAKhSFIVKEFAASgAAAAAFiF55yNMs8TXLPk65UnXepxr3qcad9EoAVAccGoFgFIAUJRFJQRRKCUlACKAAAAAADjM0yzyNMsuDvOUXrU4072ONe+znsFBLAmZ3nxkd555H1wAAAALBYCoFgWFiiBYoAShKAEoc8HeeeRpllka5cwW6HGumhxt3oc99ACwBwdccZGmWeRplxCyU+0AAUlQFJYLAAsUhRALCpSVCpRKCcnXGeRplniaZZ8nc50J33sZ7d6nGvXRKAAheeMjTLPI0yz4OuQAA+2AAAAsAAAKQpAACpQlCQ654yNMssTXHPg65lJ33qZ7abGeunRz2AAhZzmd554mmWeZ3nAAAsAH26AAAACwWKQpACiBLYWAkyNMs8TTHjE0zkF71M9tNTPbTs50CxDpyOpxwa545G2GWRrnnDpyLYFBUKgVD7oAAACwAAALAsLAJwd554mmWWJplwBqca6bGe2mpnraKhUFTkvOeRpllia5Z8nXILBUolhUoAShKfdAAAAlAApAADk64zyO8s8DXHPksdnPemxntrqZ7d0lsLLAQ654yNMc8TTLLg74lJQJQAAAAAAD7wAAAAAABCzjI0xzwNccszviUnXe5lvpsZ7d9nPYLKQBxmaZZ4mmOeRpnzCgAAAqCxQgqCkKlCU+8ABKAAAEmZ3lxgaY5ZGmXIOtTPfTYz200ONaCwKIZnWfGJpjxgaY8wsAUlgsCgJQAAAAAAU//9oACAEBAAEFAvDoXnl/4Bcl59efQheeQhC88hcl51CF55C5LzyELvPevEoQhedQhC7rGPxyEIQu6x7VyXh0IQhdtj7K8QhCF3GPk9q5Lw6EIXdYx+OQhCF3GMe1C8QhCELuMY9yF4hCELuMYx7ULxCEIXcYxj2oQvDoQhC7bGMY9iELxCMYELuMY9qEIXiEIXcYxj2oQvFIXbYxjHsQhC8qxjGPnn6EtZXg95I9xce4uMaq7BjXleqrs8kxjGPnn6E9WzMOsxFC2yrxIjmyop1kZ+PYxj2W24rxJ2GMCMYI0SyY0p7U9qZolgXKUMSK9RKkjLEseKYxjHssn0Y/bKMYK9MyMMR3SjiRZQuddmdPnGX4hjGMexCL6M5EYiyqjpJS6cfylJ/KUlN0bsFupjUfyFRXrK55LKuozhctFCUfDsYx7EIQjBbQyirpwauSrMmjr6KjURcUZ+2XK2vqK6+rP4JTxjPLE8MzbjBjL5WX9BXd18q54njbn1cfDYxj2oQhbuIfoS52fqX/AK4y+eMcrf3tl0xx1YI1/wCbLjmefrORp+o1H9d0s4hU8TqqzmDzcZnmsnX6Z0+rKiWcx+Gxj2IQhdjiH6Gedn6l36wwo7LausxVkxpzNX3+2+mamSpK6+knHqxOvEoxqWfbIlSzNSj09Zmn6whiGPhvYhCF2tfh1k/xCXVgvyoluHjbqNRimMNTqbDT6zMpWamUbtvq2erdqsVS5TysaO+V0TGol6/xUIQhdu6PVDPLhtnVSaqXKGOqzbxD7rCzTxnnW9Xr3xt0xqZT6LabaYytzOjTwvux6kvc6ynOJYjZXX7e3p0t2batLXZYU2Tqs/6rpztslKelz8JCELvaqvomcNu6LM5ROXVk0cXLbxGrJXrqp49xLUXaj/Z4r/VrbZQrtrqhGqWM6Xh/9Of9viH0lqr/APHiNXRoJY9Ph98YnX62o/6raoetZHTR+EhC+BxCp4MkdZ60CWSmv047paKqWa64wM0xzKyqNmJVxlivS11kaIRxCGIY9KPVZXGeK6IQxDS1wzGiEc50tecV1RrPSj1TrjMr08K/gsQvgyj1Yvq9ORXPpzjLNNX1Z3cWwz+JrNPpsUYzxGjGYzxLFV8LT3EOuWqrjKvXVWZnPEMT1lVseGf1S4hTjPrR6a9crdbGuROeIYjr6ZZnZiGJa6qJCzE8d1j+HnJrLI288WZgaTUV2x3cWPb6o1WZw0+k0sMVaD7J8M/Of9u+vE9TxOvEY8S+4v00PT0OMehXbTHHDPxCuMtRxP8AHEPuldpoenTPMtNoKI+lw76Z7jH8Kd8IEuIE+qzlbVzX1p4nOBVrqrNvEqZT5X1erGFuopjodLmsjG3TTrpt9edUvc8SqlZDWafNsZTvuxp9PL0Kc3Qjo650ztjZVbrYSsjrNPm3E7L7MY0/RToo5jVo6pQl2mMfwdXV9/okaY42V6fOS7RRli2iVfPMcZMY6T1bThdkpfOYxj+Hqv25YjnJHS5IUxjzlDEi7hxOiUNnCfz8xjH8WVUZHt4GK447GcMlpa5GeHQP4w0uk9DPynye9C8uxj2rkheWYx7kLy7GMe1cl5ZjGPahC8sxjHtQhC8sxjHsQhdt+LYxjHsQhC7TGPxTGMe1CF3GPxLGMe1CF2mMYx+IYxjHsQhC7TGMfiGMYx7EIQu0xjH4pjHtQhdtjH4ljGPahCF2mMY/EMYxj2IQhdpjGPxLGMexCEIXZYxjH4hjGPYhCF3X4ljGMexCELtMYx+JYxj2IRjAuyxjGPxDGMY9iEIQuyxjGPxDGZyPahCF2WMYx+IYxjHsQhC7TGMfiGMYx7EIQhdljGPxDGMY9iEIQuyxjGPxD5vahCF2mZzyfzf/2gAIAQMBAT8B+8pZZE9/1Rt/JNyBovifJfwln8vmU7ImHUR4q0yEjqmPqiIUNO1NbMQBUlZPkYs6mrvTcrS1bZiLjBWnKPyt4r+NtMfJNy54vgVZZY11DonyVrYi0FeKtbI2ZgfA49psbU2ZmCdlzZJhf8u38k2NvaNBNXuA3RKPIDP9R3kngAmF0TDcsnyRtq2MSMVlNjzToRjRZLlMui67VsWXWo6t5xw7Xyd/PsftBW5gx/2T6ZuTuq7euURVm49tyW0ktLN2DgntmBGIT2ykg6iRwWQslZ9qq5QdpgYD17dyflHPWTHa4QdvC5S5PJtg5o0bSrjgdfFQlGwK2tJ3Odjdu1du5FyksfJe19/1TqPsnNmECuVQ6xEojB/xYDDf22zyBzwHTCBrrVnya0dZ02wUTWBggBAJnK7GEMeY/WFYb1o2rdT2u8QVb8hsdVjizZeE7kK11OaeIVtZGyc5hvbQ9qscuYxjWkGgTuUx8LOJVrlb7S8wGApmyfLLSw6jobLwfBWPL4/zLMja2vkU3liwPxkb2n2WXWgfa2jmmIJiD95//9oACAECAQE/AfvKOtgNqOUHcuedihblNtxrogY9qJgrS1jdcmtJuTcnxK5hqNgE6xI2pry1NdN2l7JhBCxMYeaYwCgUc1palphBWb5grWy1hWDdfa2X8fTPlF4WT6+2svH7vRzWxi7csnFO3WmPzfspz5Qr0xsoA7dMAIHw3/qiIqzsYHdd212UARELk7KTqEEXE3qwBN9MCi2Cio9rfYEklDJsSm2IbtzB3iMFAbvNSbR96D//2gAIAQEBBj8C/wCSFTS3LRs+JXwBfBw/VdVp4haVmRuqqOrgaHvmJuX0Y/Eblpku6dQtF0R8rq/qoHQdgfY97V8BrKi7wbq6FyvV6v6FVB2kzHWPzURce8/RRN+eqp06Z/8AbN4w2hRHeUc+1ROpdY/0ldY/0lTNuzaUeBV5/pKlBqdhGbbnd8nw+/h3nEKJvOZ2dg2R41zbszHYPHnTPHWtmZo+a7wzkaxf45nX6Aiaeijjm6rqawKLquG8QzRGvpY8Pm/89yeObfnOY7PbpWO939qcRqCBbzpdSaa4jXuTjF1A3XfGN603Pa6brX2cI3YXK3EaSD0Ks26csgJkvTgZpaSl19dXgn/ZPomwjWApf4IQnkMYz6iozujpS1oKnUmCJAkDjCkYq0bGMsspP1qJkHu67YxMYp8XOEpgADDxVakEiOMO5fHMN49c5zO3Ju4dEVLS24hGZ5eCIQIHshF7i1tw3YnWpgYaiMYKWYyfL+t6f9cQ9U2BLS0QjsRqSTeSiMRBQwhA66KYuLjwHBEBxDTeN96EDKW0EMME+95dfiUyr3QcDpCEoHuiQ4tjeoDuXccxQOIB6EMSBxPSmPgMVFtm0N2xXN2jZH+RTLOAldxu6Usuh83gmtIOlr35zuRLoRDoUzc3SWB307lcNmduLdHh+maGZg2x4dKyZqJA4nM1xvbUFWcvW1cELTnS/EG5fR3nXgFPzxmwNQpxokgGia82kAP+0DWKDZjKQaark3TJJcIHCtERGd9YFTutnA3/AL1Il14iD4J4a+RodEwviVzT3TA9U60Psu9lzbHSAXlNi+dhvjeNvchzFputP7h+maOZzsNEep9uk20bewg8FGcDEEwITRZucGC/aB+4Ky3+xX7wTJTKCBEqj+ctDtmQrc0Apm73Kbud6KyOoOb6omzPiKqd9pzjyKCaNdyeNczqJ7XGGlMI0iIJktQ2sdwQ+y72X0vVdcdqlALpvlr3JNmpQi7ehSB+LfnDeO/X04loUGiCDiNIXFQcIhSkRC0WhEAUcYlSi4KeGlioOEVK0UKiGiKJAqaFQlGK0RBTQ0sVBwitFsO5IYojoTam3b/06bP3eVe7iiATAmNVCfyMOKiDEYoyOjC9c3Np4KUuAIUodXxCi4wAT2h2q65fid6qE/kSFPHRxTp7T6OBljvTJnyn4VFxgFCfjEKJoENO/eVFpiO49CsNeei0KQ+HWOmz961/O8h+Sg8xdc4puiCXAEneraz+HrDZqKtt7fRN3H+1MBu/IJrgIEH0Vm3EjzKOiNG5GJgIvifFS2bDaHGX3VqNU128J7SBCU08UzePUKzZqJHmiJRcjH4SW8CgYdaKthqiPPuDScAtBpdtNB+a0zH6ooM0RniDA4hQtBOMRfwVHiOBofPoslEYfnmLVzfNzQo12xOc/rP9E6Vk7X+ya94vjuFEx8NGtfwrREUJes25S83LicdyLDQzO9VzYsvx+6c0ijqzbkbRrJwQaeaYQ3AkYXIFvWbUeCk5uXExUgqfcpgNCI+pVrEQjLDz7dRzhHAlVc4+JV3QrQKlCqjoUJbuJC/mv4q0mcXQlv8AHvitOhURWjwVR0LX8Pv3pVXK7/B6qvK6ydWM0PL/AJK3/9oACAEBAgE/IfBKgQIQRXZXLly5cvbUqBAleDBCAgSpXZXFixZe2pUCBAleC1CAhASuyuXFly/wqBAlSvBagQgIErsrly4sv8KlQJUrwYgggJXZ3FixZe2oECBKleCkEEEBK7G5cuLLl7agQIECV4LUIICEV2VxYsWXL2hAgQJXgtQgggIHZXFixYsvaECBAleC1CCAhAdlcWXFiy9tQIECBK8FCEEEBK7K4sYWLtqBCAgSvBQhBBBAdlcWLFiy9tQIECV4LUIIIIDsrl7DDF7agQIECV4JUIIIIIrsbixYwxf4EBCAleCkEEEEB2ZhYsvbUCBCAleC1CCCCA7JYwwsYvbUICEB4LUIIIICHYrLjDDF7QgQIECV4KQQQQRXY3FjDDF7ahBAQIHgpBBBBAdjcWMMML+AQggIHgoQgggiuyuMMOwXaEIICB4LWwQQRXZXGGGGF2hCCCAleCVCCCCCK7G4wwww7QQgggIHgoQ2EgiuyuMMMLF2VCCCCAleDEEEB2SxhhhhdoQgggJXhBBFdjcYYYfwAhBBBFeFV2Nxhhhh2kC1A4swqXwN++nvF9x9tA/cv3eQv7h/1I1T6jnK/WmH9Mxh/QU+JMMMMMXsQFAGq4CPhZ9FGr51FVq89DoaQNBCAht04Z8ZA8nR7x0P0R9h8OuMMMMLsqWTJdDU+7433JoaP683YEWzgjrE3jYq3Bm6Io2G0LmvPnuvwe8AJeQTwpYwww/gBBucro4sbR7XscDlDYHyxOG+aUDn+WrEXLIiVEuXrKn2mnEhkSxLE3+DrGGGGGL2VCCEa5/UxjKjLCzc/CAmgFXkT6j+p9R/UvLd0ukya67Hqo849QqfRf1AaslXYrqS4eZiHVRLgIvjG8dw8GLGGGGL2VCCCCBDtheE/wCcRs62x6xJUF4TjVVdc3zsLrJThHuL2Kt87alNEWrc1f1ABRgIrbtphjC2/LagLjEcDR67MzPMAperSVwaATzNgWtQW2fVA0Yd242C7qtqU4a/X5WqMF1TCuStfQ57mwwwwu0IQQQRX4/V02ZlcQerUCscMemw30dmq6vVcoDxB9doGmNn3XFHzpVOu6Y+uYOchhpS7K4Q9cK11uI31umR0MVpoUMBwzTcdtEMDoXfXWojwQtRwFpkPmMIKLbpGVxt7T6fihvQtk3Ws9Ux3UGRoyIrecjFJIWpSrA6G3W4MRMp2SoLM0Z0hd2hZCX1O+mPYuw3kc9L4GINAGjrQKq1c78TOtn8zV+fdGGWL2BCCCCK/PR+tNmP16Nq9GMXrPiVDgHsfjkRgtB1KdcaTGIRAGeg3RcFQcJyUZBwdd81FsFIQ2rmaxzW3yO+64EFK9F8qB+5bakgU3wI4TFzLLe0cCsGgciG/o3qKgpqaBgOhI4jAhdAPJi8asKFZXD5DqDwhWsSyj1BwmINwE1oUlAbit0LAI04ZDeC9zfGuzWoCNYvOjW+GNI81XKvNe6MLsCEEEEB2NpyHZ6Yv0zKn/oGy1542UH+sB+WbLuDVcIHw0yX52exOQgmtOtPHlC4uO80yem78qAzcayvFumsS7uAKq1Wc3tRZViS9LgiBWtWAd/XZkpcgl6B5b+61CCSCCK7LngvaGmJcojvX8fhs0ODLs5bJ9DfzX5G8/2K9oFYCg0l/AwBpx9qbolzPQVF+RmB0K+McSt2NKjQnoraLxzmRviLF3U6+VQ2zdmod8Yyko4Mihm8kpzCekGXXcS1b8TNenscFxemhKXX+F4Op8KlPGbGi73mS0S0MEBi+QS44qroQul32aT7HKF9V2GFrXOuuAI7K8BnZijrjedyCEkEEV2tB5/OzcasfXf8JQV3Sw2Omb8gNAXUOqz+TpWyRvEcxVoy5gRa6b9E9mlq+cHK1H1Cg13cWNLNI5ubq1AMC0DNN6POe7Q+y4Y7XCC7gDGCq3WKnHlcME3SLIc27ymZyqu8CFYlDjchRAYXgkQ7U1uUh8tT7HKD1wBz0ZaLzIyMcM8bwXmoHt3EgggJXbVh3YdhWlWBXAaMTcF6Gtct+ygxl0DiunvOMwWuKz7vyee+Z4UFoDl/ZdsW+BhP3EHKEpIEqukuKV4YakoHFwfqGxrSPO4oNBddRTKEBEIRlTUtlM7igHQeoXcsBi+al4QKgt7zA0gnm1+IbQHOLWC49wuMEEV3A0egiIbti8p1IIEbGZVqebj+tfzNXvhhTQIHv4bU1BpivSY0tbxPQKgUylgyVMaL61YvrNwPN3F9NIgOVo2UBd3ppNYvoJZ0sLiwmsXSHSW+Q26WF7HaqK1T1AKluK1umSvKBfL4DF0qqL04zrKmc5HdHhC1VqGBRdKA+aBG706vXpBkhpZRg44MecLkfRO1WOwDuQBbgNVxUNwt5byONcdpzq5fznBArClY6x+9/wCZuumcPBpXvDemDMz4G8y8tSpfNAhnC8cKjpdBRxW0dcM+y4tmRd2sp5sDEQlYyhIlbn1gF+UCAFFW/wBYg98xVGqMGa8MPVWDlDkmjyFC+8cCKYY0HwwVyoFt3N5qr9I2mBwcICK2wd5i9qiXFbl36p+oK3Q4cw38dmsWMML3H3lkv01hOHPp73pFnrdB8t/nAqa/nn7NuAceiUkpPIn59D5JMOD6Ygb/AAsy2F10xhqb9OsIZRyXosDKdczh+hOAt9VZoezfWdDdO5zMTtG1mzE/UyAoB3NUACMVo8o4YVPUZPeJWMddcNwoq/OUPylO/WesOGEsU4y7la+ctv8AT7AV5yhtajXDgeEfhfqBe0QCmF5qyYs2xkX0wUR34y1vS2C2gCMGJg1zY7EsWMMML3DKdRNIvpcbe5f2mhi+MMbKuZn9iYdPaesQqjbqgMf65OcCgTOjFrq8u/MMMMX3L4jboosbuRoJbxdpNEJZa/NGqQlbfo8u9rlxhhhZeyoEDt2bDfWH/RNEMMafmGoE9ZrlOmIzQPRlP+Zcf0OX970uwsYWXtqBCDxVcWMMMXtqEBCCK8TuLGGGFl7AgQggJXidxYwww7VQIQEIDxO5cYYYYXaEIIICV4ncYYYYvbUIIIIr878MuLGGGHaCEEEBA7BY+FmGGGGL2VCCCCA7C4w+FCxhhhhdoQggipX53FixhhfB7jDDDC7QhBBASuwYYYYfB1xhhhhi9lQgggiuwWMMMMX4Newwwyxe0ggggJX53GGGGF8HuLGGGL2hCCCAlfmsWMMMLL8GWMMMMLtCEEEEV2Cxhhhi/BrjDDDDF7KhBBBFdhcYYYYXwdYwwyxewhBBBBFfncYYZYYuXL8EWMMMMLtIIIICV+VbFixYwu2tleBXGGGGHaqEEEEB2Cxhhhi/Brixhhli9lQg2AgJX5sMMMML4OwwwwwuyoQQQQdgWMMMMMX4MsYdgYXaEIIIID81jDDDDD4NcYYYYdqoQQQQH53LjDDLF+DXsMMMMLsqEEEEEB+axhhlhfCDDLDF7SCCCCK/NYwwwy99V2SxhYsYWOwIQQQQHYLHYFjF98//2gAMAwECAgIDAwAAEKCOEOFPFBLOFABPHFOICLOCBFECFOHHNOLBKFKMBCHJIHHAKPIGEGCBBMNIMOGILLMKOMMONLCFJCENJACGDLPJGIJPDIMNPJPJDAEIIFCLPJCOCMPHBPLCKGGIFECHOHPDOAPMMPJDKNDEBCPICOHNOHMCDOBNPDHJPOLMCGAEBPLHFGOCAIIMPMNICMPPPLHPPOPAODBOFDIOOJCGBJPABEOFCAAFNPPPFPPPCMIGKCCMEOOPDDKIIHELDEBMOPPHPDPOHMPODOKINJPNJINLCILPOAEAIFJNNPHNPLCAALEBEGOLEDJONLDNNNLABAAOKNPPPLPOJJPMEMFEDBNLAJIOHPPLOCEEBEPHNPPHKEHDABEAGHOLLNCDFBEPPIKBAIEMMLPNNMBHALFDDL6vqNtzIOCOPLOCCACAAAACMHALADOFL5lwRSbQWvPBMNLHPBBBBIAACNENPCLNFAENSHOrIcsCCEBPLLPJGEAAAIABPHFDGGBBN1fGXLKfNBMHJOONLDNCCABCAOGKOKKEMCGgRVVHHDABENLGOPGPNMHNFIPBBKCJBKJPZ9NoJNDFLAHIDKAOPPPHBDAJLOLOLGCCErAFPGAAFOJPDILJBHNHDJJDFCPFCPCDtiV9GA9hKBJPOMAJIOCMJHECLHILPOOGCLIQFt/mbOHPPJMKDIKBDFAFPMFLPLNPBJBAKAFAMFFNNHPCLFJGAHILAMPHPHLKKGIGFAJIAFDMHPLPKKMJBAGAPFJBNJPALLOJBBKDAAOIBNMOGGEHCAPLMHPDKDLOPKCGIGECBAOAAECGCLBCHAHBLIFLMJNFPNPLGJNMGHGACCBKGODAMJJFHHNMAFGDOKJILHPGOHFCJCECDMJCBNMJJIHEBMEMNMPNNOOOBAPPCCDAJIJJONIKPKIIEMOJNKGLHJDAGPOHNGHHNBOBJLFCHCFJLJIBDJNMLMJOOMMMHOAIMCNAPJDDKLDGKCFGMOOEOLGNFIHLMCNkkhbihfpablgikfkhmpohemlnpgopkfiioKBJKPKANDMIOPDGDDBCCBGFOJFNFKDHJNLMMMNEFHMLHAKBMDOHOGP/2gAIAQMCAT8Q/wAlKBTnanpq9amvfNp7f2fb/SaN0P8AVzLdC4/iO0FG5x3pAFigN8IK/WPtvlQHAb3ob4jYQcc30P7FN06CfIEr4m9Q4/tKMM7hqRx+gHeRYDup3jr0g9RpN7q5OMtKbHwVYNwQP8v4gG1AJ1Q4XnUzDhQFJcECghF1ioS3hP1j4iQIBl+Hq/HfBXM1FPVs9r+Jmvpexb5974XPel0+04DMeSVHx5Y6qpQrqnyaHsS7/q1ffgvrHRY311855YSBfQ5wFGgeQE52PQx7O/N6Oq7g1OF6vKAgWOGVsWDDHEPH8d9EwiC8s+X7mQbyD+/EqjLcH243Tc0nLxeV1vibtnIHxH1T9ecnrBaP19imOSKYNLq8d6cBSGg/s3wedHsX8zDWnJee99djtqN79UseZTElIb1B7HyzV+R/QM3nTwWUcc/5P//aAAgBAgIBPxD/ACUxerl/ZuNbA6mK0fpAyM96AW4CPjh8ojQufxj+zkPrF6WTMmHL+RjHpDFnmcO860qLuwfD+ygwbWFDM1LOJvIvKfP+u9/B8232k0+XvvqGnph+4Kxw2Xnkma8Xvxt87z/2ly+k1cVnIDvywtXn7bvlUAI6MyLp9PTvqNi1UR8jMZtXCaxbzf15c4zpK+/G1HvWDlLxj7k6Z/k3Vbi7EMeY0/15S3j7X6fmdV6nySq/yf8A/9oACAEBAwE/EIKuKeKOz5rjMqDg/nBeBBaUBIHBMGDJk1lBAqUQBAKERVUENFBFQQCKChEVVFeIoqAWookWlVQmGwqYcTggWRRwgg9CKGZ2gQWxEQuA4YNKZMGgEFaikuBnZnOVRBVwUFM4bRYILTKIUN7hSGTSmXRQQKUSIUFRarB2ijsyuUHBEAobVREALgkw2VTULCogcAKGKghAuVBFFVWgUFALihCUUVpoMGhMmhQWlUQqGxXAVAg4TvEFA9oIEi4DhsKmTQBaqCQOGYLDnZygoDaOAGmRbCqotJhtKpoAtFRAHonB6EXARA4JoTWpl0FpVHoRipvFQiuEVBFco21hEKKqiqTDaRSZnBaRRAF6obFwhVTOjuA4icKq1DZVbDQBBZVEAenNoqLBBcMFVytJhgyagMEwCC0qCAPQipigqLfzs+IKg26gLSsNpQLx0AtERC9QqqK1QQB1Nd0JFFYSobAplxQWlESBFRcVWLhb0MVQV2gpWKCChNyGGgCC3IgeuOdh0ggsXbETAtNSaJWwQvCYOAKo8c8Mmx2ARk/72cCBVVdDaQDLmcHDAo+GPRZwB3nyCKKgoobyAugF2CqLiKKxWDip3NqJAhobMoTCtgBhlAHcgoFw9aIGgxWYDLAFaaCOG6eLiuKkQILTQ3CwehFw7hRnPzuKXQY6MtAUxWi9+nEbbnCQKCKiqTDcHTOCGWsOCxeiy9J+rgE8BlAC56R6JnR+jyrgShoaiGG6GnBcjAhcU3vhHhi54qbgeOhQEcyAAdScIdPM1j8ZaOtDNMyNh96kt4HyT6w3vfsN9MJe8rxZ7PhrgZ+pVVQlXAyXoHgjIAG5MLkceWR4fVROpIfaUPaLgADYVkIogYHXUAD/AMmZ49Q/ldQ2hKxf2n27cJUdTYrB6R0JWMNbvj42EwRiIwXZDluWAg+XG+x/oyAgQMMqR0ABJM5eHXBNG/M6XYwHsGUxlyNsZgJCVDwUP2PMHcYxCT21/B55N4FeICDBB1B9Bn6gXnuYJgFFfslq/UBqYPON9NAGgf00nkAZwQPnj/IFA7oPepozAiG+aRgRvzCEJHAwAIxBbsXOl+WIgKA4gwBxYoaD0x4qLj8LTOBv9rbhKAgOXpAWAjKCAmFAQWBjx9G+8JMlGJQGcM8omjWLb8aulQg4RwFfEMEGuhHVRjluc4YMooaggMQ/ZGIMYIEcprJARm34BcjhxX6hqJtri1BDrN0weBqH/MwQwP5defajLyjv/wCQDamBAwE9poKX4ezoYSH8Bm08RVDNPwMKRBlBzNxHlh/xm5/sGAIIAaKZK6Rmx5kOTnUPU6iWHPsKo4phMyJjGsAmsjBasCwKER4NCOP4FSZOLTWEUGwy0NidduVAjhhNQCY0xK4upUASvmYIGHwPTX5TQCPt/hCsy+n5UH9xF9oMQGQAPYqdxO01jDXAO0+kUOIEexxQGAUAYvDmaz8NxqeQfaaTliZqPoHgUBxdTbA6an4z4ErDcISBSt/1gTcwhwYiQu2aYU4JzTpBmcWDo0wMZZBuraEOWcEYmzhKC+XCOcO2fQQ3U5xdIdjpmbCQGmRV/AcrsE6ZzC0vkDeIBoFk9xgj9SGwwGZYkFHInu+IOFzJimcba5BYAqmgnjflQmPQQzr1MMRGWJiv1sp/wDBWc4yNKjO3ATmTraEJmJHJBH2e6aj/ALAQhDejUKOLziBJJxnytfGf77x1XtE4HtIxVG7AADpwbDlBLmswFAAww0NzjCBIuIzAN4OYoQCPJ8O2kxgX2FDySPmDygwjSNZtsY5iHPCYZ5aBl2MFyM7FJgASmUTM+k+8R0iMTyLQTBOiSOJxDiWEkNSCSbB6B9D3hTcfoFwoUwah0LEOBjsGaHX+UBjwDPbMc61j7U5kB/wazL2tJRYuo3Q8BuTkPLFttLuYZZOS5LUsU1KFoAC886grkMVMI4Q78EOCHdijxamxrqBsGACmsU5yhSKMsRNHVGHs440HV8YUFjvZoBbFdrQwOuL6jwRQg6/cfLF96+dAZI/9B/lOTfWSDzu61OfnpUCIAAAAZADAADYQDWJ6jn5gjFtMwoJA+4sdk1scbD/YEhbWEUAhkDg2nKYW6v2YDg33XMVkDcCp7CV8lBO0LJ2CRkxYPPefBdpEMtiaEOJ8lZpIMWhbCYMgpYXJejBhHq89xIGwWcF+weUyMXVhSYrDV1RF1ncIS3tmMe5GI8OAuDlRVZ+JVc7FDX4Oc5c4h0yUZJNcoF+t4HkICYctqaOPIPyei735RDz2MBbFeEYB5mtDYujbebRn+HdPo1iIIDZnEcOGmD2Aepg0SgXwxsr2AAxix6hE9Jmb8uTaZ/TNqRGDsbqjWYS5wDmR0hNzwAQDIakTFnQHMzdCMIJGdYueY7xjeaKa+0wxgGIAHRYuI1fsjTlUWiiq49voYcIMIBFzNfsGM0wAA0P8i6xwhkYgM8AHvggcw3ALO7sodLUSRc2RntahUJ9XtRO+Y+8GhBMEEh8AoImZ4mMwjltBIMAFoAQxzymTBkiZIOY/5M2eBoIZ2CIlw4zQJFnuTE+pBha6RlCjcHT3nKeFUX0yExDC9SMYFeDmk7mEhxNDuGLLLKFGpR1TmToI9UgYshA2ZBQZTlg3MR05e1BxjYECUdhqLFRzO9AP++0HFmw3Gho9Z4XOG24gm2QP7zMP8p0XgHltU2FPMPKH2kAIyH+VcbCJY9DhQWQEZe5841LgWZmxH1CIAMDAKDSAugCcDZjTczhtLc/EEQ8kBQzyLO2eyYz2i0H9PLMzMcvcOH+IigeQT0BwkICJAh77zgICO/vQYXGmyHvBYdMeBTn/ALDzmg9tg/aCAbEoipyHnEBHRwCQGQyE5wEgE/HyIGIeyZ2cWwV92u5wmqGgyiqeKREADIABzJyUJGZ1UPXV7Dk6oApzyvq0T+xCgsVOvMZ0YXswMQ9wnhNIzrGiDQljaQ0IxgQyzM40NhOz/CqAOvvfbwZP3IEP7MRwECZJvxZYGpgplHCR3Y6x3SwxuY7TRlcGzRbCNw87ETvDP7RgH7ZBhjkpCSFfiMYyxsplq6jmYc1rjZh98Py0Q5OByQjsC6eSJwnwVBcHCVAxKXTwh+Ef7pXm+B1hcYtY/CeZmBFAIRZA3HpscuYgo/3R+blsWJgxnK94/QUxBL9QPEALBY5jEeLEo562sX4mr3inhqR0uqg24Nke5FA5w6keWEOvKslcjUYCedY2Z28oWJhCMGF8wtsQDGD8dwkdoJ/VwqACGikySkDM8cg1HKTpA9HB57MY+0epBY4nAOY8ih3XDGJY4fmk/ZOwBjMXjhZB7jLdzFwmfZvsMh0g8JBYiRFIQcgDO1+/DEAVNbOVgorBkA2Mzkj2nyV8kX0wz3zgDRAYNCLX+R0/2YS3qPyO8MTvgehiVBK6oJ4ro7BPEwceb8idIkvuB1QoDDQUdDDYeKYDCagigZdAI7HY7v2bT3nmYV0wGGWYd8+0xz8JgMhVlg0P0dID9c5GdtMw7wkNPSsunarsMG2AmgUPTgtNxoI8wiw5IBqPWPlnj8wBgAAbBfF4RcoEAI9QXP8AYn4ZO0JCcgeGfvjDI46QWD86Bx1YLHRNjMtQCB+DgqmZ2K5R351UNmXoHClqAYcUFsQFh1NDUVNBbra6CpoKOpoY+CeKQEMIgV51fDA4T4rsfEIATQXEQAqOC7RabDUVV5sNxmCGcS4AVyyj0ZXC/OxTbgC42iAy4oLYAEtdMFTYbQZzobzQ2i0WmwzBchjgvCEVNI4aOxedXwxhrQmDiurvJtASQtHBcCFXOGoTUBaY71U2GoqoLjYb0EHAJi2QCRQLHDacS2CqqamLhCudu1zhS0HbG4oy2dEJXEq4ICY5lQR1JpypypzoaCgqac7RBYJ9Rw2Dc+gaBaKAsFpj4CjHGrXcb3BV8IVMFKO/SZDQBaUJgS5w2yNsJ3q4OIrzxFRw19v0ycxgcKbaEJBwjZtE3DhY4LDM/Q5zOrvAZcVzyiVa4TelB8DKCpghpyqKOzKw8Ahcch7KBqDqsMMAVzhtl746uOgo447HX3j4LsdxNrZuQw4F10BLnDnm5d2DADnGOccdrgNDYblVWGhoauJvbUCMtfRAjmNFDBNzsmKhUKLhu7Orptwd4Urb6bYTFpBdvgC4m5rC3AcNjrlXOGCvK11FH4qTDwH5BYNVRFBmdPEJiLXVsdrhjoDDlHY41CbHY7ncTQ37P2xwUGXZYBBa7C9+b9AtHV2OOpo7B1obDRWKqsJtbW0XFe/yqGrvDcJ3C03GrVMoI+C6bU/c4ZRb+E0BmNj6eRRAsyqNtbLTOzajjq7s5nDZlRRQ0MM5R0E5wGEwwYTX3xpmcDUsutquHHe3aco7XQUBo4Y4auGCCOO18AxwwjWe9XTvhMVx4Cw7U3a9uQme9fernaLej4DpnUmDqKGfCjhiq6EKwM6cNRKAN7VIUfXEp+8whR1eDiaxnw0MHGigp+8whUEEVPugp+70zhFhCoKf/9k=" alt="Letsile Tebogo Charitable Foundation Logo">
+    <div class="nav-logo-text">
+      Letsile Tebogo
+      <span>Charitable Foundation</span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#pillars">Our Work</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#stories">Stories</a></li>
+    <li><a href="#contact" class="nav-cta">Get Involved</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Botswana's Champion Foundation</div>
+    <h1 class="hero-title">
+      Hope Has<br>
+      <em>A Center.</em>
+    </h1>
+    <p class="hero-subtitle">
+      Founded by Olympic gold medalist Letsile Tebogo, the LTCF uses sport as a vehicle for youth development, cancer awareness, and community upliftment across Botswana.
+    </p>
+    <div class="hero-pillars">
+      <div class="pillar"><span class="pillar-dot community"></span>Community</div>
+      <div class="pillar"><span class="pillar-dot advocacy"></span>Advocacy</div>
+      <div class="pillar"><span class="pillar-dot mentorship"></span>Mentorship</div>
+    </div>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">Ongoing Projects</a>
+      <a href="#about" class="btn-ghost">Our Story →</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="photo_2026-03-23_12-50-44.jpg" alt="Letsile Tebogo with children" class="hero-img" onerror="this.style.display='none'">
+    <div class="hero-overlay"></div>
+    <div class="hero-stat-card">
+      <div class="num">2024</div>
+      <div class="label">Olympic Gold — Paris</div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="mission-strip">
+  <div class="strip-inner">
+    <span class="strip-item">Community Upliftment</span>
+    <span class="strip-item">Cancer Advocacy</span>
+    <span class="strip-item">Athlete Mentorship</span>
+    <span class="strip-item">Youth Development</span>
+    <span class="strip-item">Lifting Botswana</span>
+    <span class="strip-item">Run For Hope</span>
+    <span class="strip-item">Community Upliftment</span>
+    <span class="strip-item">Cancer Advocacy</span>
+    <span class="strip-item">Athlete Mentorship</span>
+    <span class="strip-item">Youth Development</span>
+    <span class="strip-item">Lifting Botswana</span>
+    <span class="strip-item">Run For Hope</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-images">
+    <img src="photo_2026-03-23_12-50-44.jpg" alt="Foundation community work" class="about-img-main" onerror="this.style.background:'#f0d0d8';this.style.borderRadius='20px'">
+    <img src="photo_2026-03-23_12-50-27.jpg" alt="Letsile with youth" class="about-img-secondary" onerror="this.style.display='none'">
+    <div class="about-badge">
+      <span class="big">✦</span>
+      <span class="small">Lifting One<br>Project at a Time</span>
+    </div>
+  </div>
+  <div class="about-content">
+    <div class="section-label">About the Foundation</div>
+    <h2 class="section-title">Built on Purpose,<br><em>Driven by Heart</em></h2>
+    <p class="about-text">
+      The Letsile Tebogo Charitable Foundation was established by Botswana's first Olympic gold medalist with a singular vision: to give back to the community that helped shape a champion.
+    </p>
+    <p class="about-text">
+      We believe sport is more than competition — it's a platform for change. Through mentorship, cancer awareness, and community upliftment, we are committed to building a stronger, healthier Botswana.
+    </p>
+    <div class="about-quote">
+      "Committed to lifting our community one project at a time."
+    </div>
+    <a href="/cdn-cgi/l/email-protection#4f233b2c272e3d263b2e2d232a29203a212b2e3b2620210f28222e2623612c2022" class="btn-primary">Partner With Us</a>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="pillars-section" id="pillars">
+  <div class="pillars-header">
+    <div class="section-label">What We Stand For</div>
+    <h2 class="section-title">Three Pillars of <em>Impact</em></h2>
+  </div>
+  <div class="pillars-grid">
+    <div class="pillar-card">
+      <div class="pillar-icon c">🤝</div>
+      <h3>Community Upliftment</h3>
+      <p>We invest directly in communities across Botswana — providing essential resources, healthcare supplies, and support to those who need it most. From colostomy bags to school programmes, we meet communities where they are.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-icon a">🎗️</div>
+      <h3>Cancer Advocacy</h3>
+      <p>We raise awareness around cancer, reducing stigma and ensuring patients receive the care and dignity they deserve. No one should face illness without support.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-icon m">🏃</div>
+      <h3>Athlete Mentorship</h3>
+      <p>Using the power of sport as a tool for youth development, we mentor the next generation of Botswana's athletes — building character, discipline, and ambition both on and off the track.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects-section" id="projects">
+  <div class="projects-header">
+    <div>
+      <div class="section-label">What We're Doing Now</div>
+      <h2 class="section-title">Ongoing <em>Projects</em></h2>
+    </div>
+    <a href="/cdn-cgi/l/email-protection#aec2dacdc6cfdcc7dacfccc2cbc8c1dbc0cacfdac7c1c0eec9c3cfc7c280cdc1c3" class="btn-primary">Get Involved</a>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card-main">
+      <img src="cb1.jpg" alt="Colostomy bag donation project" class="project-img" onerror="this.style.background='linear-gradient(135deg,#f0d0d8,#fdf6f0)';this.style.display='block'">
+      <div class="project-info">
+        <div class="project-badge">Active — Nationwide</div>
+        <h3>Colostomy Bag Distribution Drive</h3>
+        <p>
+          Across Botswana, individuals living with ostomies face critical shortages of essential medical supplies. The LTCF is sourcing and distributing Coloplast SenSura Flex &amp; Click ostomy bags to patients in need — including couriering supplies to those in remote areas who cannot travel.
+        </p>
+        <p>
+          This initiative is part of our broader cancer advocacy mission: ensuring that patients recovering from colorectal cancer or related conditions can live with dignity and independence.
+        </p>
+        <div class="project-meta">
+          <div class="meta-item">
+            <span class="meta-label">Scope</span>
+            <span class="meta-value">Nationwide Botswana</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Delivery</span>
+            <span class="meta-value">In-person &amp; Courier</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Status</span>
+            <span class="meta-value" style="color:var(--pink)">● Ongoing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="project-sidebar">
+      <div class="side-card accent">
+        <h4>Need Ostomy Supplies?</h4>
+        <p>If you or someone you know requires colostomy bags and cannot access them, reach out to us directly. We will arrange delivery across Botswana where necessary.</p>
+        <a href="/cdn-cgi/l/email-protection#19756d7a71786b706d787b757c7f766c777d786d707677597e74787075377a7674" class="btn-white">Contact Us →</a>
+      </div>
+      <div class="side-card">
+        <h4>How to Support</h4>
+        <p>You can help us reach more patients by donating supplies, funding courier costs, or simply spreading the word. Every contribution makes a real difference.</p>
+        <br>
+        <a href="/cdn-cgi/l/email-protection#e8849c8b80899a819c898a848d8e879d868c899c818786a88f85898184c68b8785" style="color:var(--pink);font-weight:600;font-size:0.85rem;text-decoration:none;">Donate or Volunteer →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section" id="gallery">
+  <div class="gallery-header">
+    <div class="section-label">In the Field</div>
+    <h2 class="section-title">Foundation <em>at Work</em></h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item tall" style="grid-row:span 2;">
+      <img src="photo_2026-03-23_12-50-27.jpg" alt="Letsile with youth" onerror="this.src='';this.style.background='linear-gradient(135deg,#D63B6E,#E8806A)'">
+      <div class="gallery-overlay">Youth Engagement Programme</div>
+    </div>
+    <div class="gallery-item">
+      <img src="photo_2026-03-23_12-50-44.jpg" alt="Community event" onerror="this.src='';this.style.background='linear-gradient(135deg,#E8806A,#c0395a)'">
+      <div class="gallery-overlay">Community Outreach</div>
+    </div>
+    <div class="gallery-item">
+      <img src="cb1.jpg" alt="Colostomy supplies" onerror="this.src='';this.style.background='linear-gradient(135deg,#c0395a,#D63B6E)'">
+      <div class="gallery-overlay">Medical Supply Distribution</div>
+    </div>
+    <div class="gallery-item" style="grid-column:span 2;">
+      <img src="cb2.jpg" alt="SenSura supplies" onerror="this.src='';this.style.background='linear-gradient(135deg,#2a0e1e,#D63B6E)'">
+      <div class="gallery-overlay">Coloplast SenSura Supplies Ready for Distribution</div>
+    </div>
+  </div>
+</section>
+
+<!-- STORIES -->
+<section class="stories-section" id="stories">
+  <div class="stories-header">
+    <div class="section-label">Community Voices</div>
+    <h2 class="section-title">What People Are <em>Saying</em></h2>
+  </div>
+  <p class="stories-intro">
+    Have you interacted with the Letsile Tebogo Charitable Foundation? Received supplies, attended an event, or been inspired by the work? Share your story — your words uplift others.
+  </p>
+
+  <!-- SUBMIT FORM -->
+  <div class="story-form-card">
+    <h3>Share Your Story ✦</h3>
+    <div class="story-form-row">
+      <div class="story-form-group">
+        <label>Your Name</label>
+        <input type="text" id="story-name" placeholder="e.g. Mpho Dlamini" maxlength="60">
+      </div>
+      <div class="story-form-group">
+        <label>Your Town / City</label>
+        <input type="text" id="story-location" placeholder="e.g. Gaborone" maxlength="60">
+      </div>
+    </div>
+    <div class="story-form-group">
+      <label>How did you interact with LTCF?</label>
+      <select id="story-category">
+        <option value="">Select one...</option>
+        <option value="Received Supplies">Received Medical Supplies</option>
+        <option value="Youth Programme">Youth / Mentorship Programme</option>
+        <option value="Community Event">Community Event</option>
+        <option value="Cancer Advocacy">Cancer Advocacy</option>
+        <option value="Volunteer">Volunteered with LTCF</option>
+        <option value="Inspired">Inspired by the Foundation</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div class="story-form-group">
+      <label>Your Story</label>
+      <textarea id="story-text" placeholder="Tell us about your experience with the foundation..." maxlength="600"></textarea>
+    </div>
+    <button class="story-submit" id="story-btn" onclick="submitStory()">Post My Story</button>
+  </div>
+
+  <!-- STORIES WALL -->
+  <div class="stories-wall">
+    <div class="stories-wall-header">
+      <h3>Community Stories</h3>
+      <span class="stories-count" id="stories-count">Loading...</span>
+    </div>
+    <div class="stories-grid" id="stories-grid">
+      <div class="stories-loading">Loading stories...</div>
+    </div>
+  </div>
+</section>
+
+<div class="toast" id="toast"></div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const STORAGE_KEY = 'ltcf-stories-v1';
+const AVATAR_COLORS = ['#D63B6E','#E8806A','#c0395a','#a02d50','#e06080','#b84060'];
+const CATEGORY_EMOJIS = {
+  'Received Supplies': '\uD83D\uDCE6',
+  'Youth Programme': '\uD83C\uDFC3',
+  'Community Event': '\uD83E\uDD1D',
+  'Cancer Advocacy': '\uD83C\uDF97\uFE0F',
+  'Volunteer': '\uD83D\uDC9B',
+  'Inspired': '\u2728',
+  'Other': '\uD83D\uDCAC'
+};
+
+function getInitials(name) {
+  return name.trim().split(' ').map(w => w[0]).join('').toUpperCase().slice(0,2);
+}
+
+function formatDate(ts) {
+  const d = new Date(ts);
+  return d.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
+}
+
+function showToast(msg, type='success') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast ' + type + ' show';
+  setTimeout(() => t.className = 'toast', 3000);
+}
+
+async function loadStories() {
+  const grid = document.getElementById('stories-grid');
+  const countEl = document.getElementById('stories-count');
+  try {
+    const result = await window.storage.list(STORAGE_KEY + ':', true);
+    const keys = result && result.keys ? result.keys : [];
+    const stories = [];
+    for (const key of keys) {
+      try {
+        const r = await window.storage.get(key, true);
+        if (r && r.value) stories.push(JSON.parse(r.value));
+      } catch(e) {}
+    }
+    stories.sort((a, b) => b.ts - a.ts);
+    countEl.textContent = stories.length + (stories.length === 1 ? ' story' : ' stories');
+    if (stories.length === 0) {
+      grid.innerHTML = '<div class="stories-empty"><strong>No stories yet.</strong><p>Be the first to share your experience with LTCF!</p></div>';
+      return;
+    }
+    grid.innerHTML = stories.map(renderCard).join('');
+  } catch(e) {
+    countEl.textContent = '0 stories';
+    grid.innerHTML = '<div class="stories-empty"><strong>No stories yet.</strong><p>Be the first to share your experience!</p></div>';
+  }
+}
+
+function renderCard(s) {
+  const color = AVATAR_COLORS[Math.abs(s.ts % AVATAR_COLORS.length)];
+  const emoji = CATEGORY_EMOJIS[s.category] || '💬';
+  return `
+    <div class="story-card">
+      <div class="story-quote-mark">"</div>
+      <div class="story-card-top">
+        <div class="story-avatar" style="background:${color}">${getInitials(s.name)}</div>
+        <div class="story-meta">
+          <div class="story-name">${escHtml(s.name)}${s.location ? ' · ' + escHtml(s.location) : ''}</div>
+          <div class="story-tag-label">${emoji} ${escHtml(s.category)}</div>
+        </div>
+      </div>
+      <div class="story-text">${escHtml(s.story)}</div>
+      <div class="story-date">${formatDate(s.ts)}</div>
+    </div>`;
+}
+
+function escHtml(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+async function submitStory() {
+  const name = document.getElementById('story-name').value.trim();
+  const location = document.getElementById('story-location').value.trim();
+  const category = document.getElementById('story-category').value;
+  const story = document.getElementById('story-text').value.trim();
+
+  if (!name) { showToast('Please enter your name.', 'error'); return; }
+  if (!category) { showToast('Please select how you interacted with LTCF.', 'error'); return; }
+  if (story.length < 20) { showToast('Please write at least a sentence about your experience.', 'error'); return; }
+
+  const btn = document.getElementById('story-btn');
+  btn.disabled = true;
+  btn.textContent = 'Posting...';
+
+  const ts = Date.now();
+  const entry = { name, location, category, story, ts };
+  const key = STORAGE_KEY + ':' + ts;
+
+  try {
+    await window.storage.set(key, JSON.stringify(entry), true);
+    document.getElementById('story-name').value = '';
+    document.getElementById('story-location').value = '';
+    document.getElementById('story-category').value = '';
+    document.getElementById('story-text').value = '';
+    showToast('Thank you! Your story has been shared. 💛');
+    await loadStories();
+  } catch(e) {
+    showToast('Could not post story. Please try again.', 'error');
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Post My Story';
+}
+
+loadStories();
+</script>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-content">
+    <div class="section-label">Reach Out</div>
+    <h2 class="section-title">Join the <em>Movement</em></h2>
+    <p class="contact-text">
+      Whether you want to volunteer, donate supplies, partner with us, or request assistance — we want to hear from you. Together, we can uplift communities across Botswana.
+    </p>
+    <div class="contact-detail">
+      <div class="icon">✉️</div>
+      <div class="detail-text">
+        <div class="detail-label">Email</div>
+        <div class="detail-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a5c9d1c6cdc4d7ccd1c4c7c9c0c3cad0cbc1c4d1cccacbe5c2c8c4ccc98bc6cac8">[email&#160;protected]</a></div>
+      </div>
+    </div>
+    <div class="contact-detail">
+      <div class="icon">📍</div>
+      <div class="detail-text">
+        <div class="detail-label">Location</div>
+        <div class="detail-value">Botswana — Nationwide Reach</div>
+      </div>
+    </div>
+    <div class="contact-detail">
+      <div class="icon">📦</div>
+      <div class="detail-text">
+        <div class="detail-label">Supply Requests</div>
+        <div class="detail-value">Courier available across Botswana</div>
+      </div>
+    </div>
+  </div>
+  <div class="contact-form">
+    <div class="form-row">
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" placeholder="Keabetswe">
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" placeholder="Mokoena">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" placeholder="you@example.com">
+    </div>
+    <div class="form-group">
+      <label>How can we help?</label>
+      <textarea placeholder="I'd like to request supplies / volunteer / donate..."></textarea>
+    </div>
+    <button onclick="alert('Thank you for reaching out! We will be in touch soon.')" class="btn-primary" style="border:none;cursor:pointer;width:100%;font-size:1rem;padding:1rem;">Send Message</button>
