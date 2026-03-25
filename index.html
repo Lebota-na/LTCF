@@ -1059,7 +1059,7 @@
     <div class="about-quote">
       "Committed to lifting our community one project at a time."
     </div>
-    <a href="/cdn-cgi/l/email-protection#4f233b2c272e3d263b2e2d232a29203a212b2e3b2620210f28222e2623612c2022" class="btn-primary">Partner With Us</a>
+    <a href="https://wa.me/26772919091?text=Hi%20LTCF%2C%20I%20would%20like%20to%20partner%20with%20the%20foundation." target="_blank" class="btn-primary">Partner With Us</a>
   </div>
 </section>
 
@@ -1095,7 +1095,7 @@
       <div class="section-label">What We're Doing Now</div>
       <h2 class="section-title">Ongoing <em>Projects</em></h2>
     </div>
-    <a href="/cdn-cgi/l/email-protection#aec2dacdc6cfdcc7dacfccc2cbc8c1dbc0cacfdac7c1c0eec9c3cfc7c280cdc1c3" class="btn-primary">Get Involved</a>
+    <a href="https://wa.me/26772919091?text=Hi%20LTCF%2C%20I%20would%20like%20to%20get%20involved%20with%20the%20foundation." target="_blank" class="btn-primary">Get Involved</a>
   </div>
   <div class="projects-grid">
     <div class="project-card-main">
@@ -1129,13 +1129,13 @@
       <div class="side-card accent">
         <h4>Need Ostomy Supplies?</h4>
         <p>If you or someone you know requires colostomy bags and cannot access them, reach out to us directly. We will arrange delivery across Botswana where necessary.</p>
-        <a href="/cdn-cgi/l/email-protection#19756d7a71786b706d787b757c7f766c777d786d707677597e74787075377a7674" class="btn-white">Contact Us →</a>
+        <a href="https://wa.me/26772919091?text=Hi%20LTCF%2C%20I%20need%20assistance%20with%20ostomy%20supplies." target="_blank" class="btn-white">Contact Us →</a>
       </div>
       <div class="side-card">
         <h4>How to Support</h4>
         <p>You can help us reach more patients by donating supplies, funding courier costs, or simply spreading the word. Every contribution makes a real difference.</p>
         <br>
-        <a href="/cdn-cgi/l/email-protection#e8849c8b80899a819c898a848d8e879d868c899c818786a88f85898184c68b8785" style="color:var(--pink);font-weight:600;font-size:0.85rem;text-decoration:none;">Donate or Volunteer →</a>
+        <a href="https://wa.me/26772919091?text=Hi%20LTCF%2C%20I%20would%20like%20to%20donate%20or%20volunteer%20with%20the%20foundation." target="_blank" style="color:var(--pink);font-weight:600;font-size:0.85rem;text-decoration:none;">Donate or Volunteer →</a>
       </div>
     </div>
   </div>
@@ -1368,23 +1368,79 @@ loadStories();
       </div>
     </div>
   </div>
-  <div class="contact-form">
+  <form class="contact-form" action="https://formspree.io/f/ltcharitablefoundation@gmail.com" method="POST" onsubmit="handleFormSubmit(event)">
     <div class="form-row">
       <div class="form-group">
         <label>First Name</label>
-        <input type="text" placeholder="Keabetswe">
+        <input type="text" name="first_name" placeholder="Keabetswe" required>
       </div>
       <div class="form-group">
         <label>Last Name</label>
-        <input type="text" placeholder="Mokoena">
+        <input type="text" name="last_name" placeholder="Mokoena" required>
       </div>
     </div>
     <div class="form-group">
       <label>Email</label>
-      <input type="email" placeholder="you@example.com">
+      <input type="email" name="email" placeholder="you@example.com" required>
     </div>
     <div class="form-group">
       <label>How can we help?</label>
-      <textarea placeholder="I'd like to request supplies / volunteer / donate..."></textarea>
+      <textarea name="message" placeholder="I'd like to request supplies / volunteer / donate..." required></textarea>
     </div>
-    <button onclick="alert('Thank you for reaching out! We will be in touch soon.')" class="btn-primary" style="border:none;cursor:pointer;width:100%;font-size:1rem;padding:1rem;">Send Message</button>
+    <button type="submit" id="contact-btn" class="btn-primary" style="border:none;cursor:pointer;width:100%;font-size:1rem;padding:1rem;">Send Message</button>
+    <div id="form-success" style="display:none;margin-top:1rem;padding:1rem;background:rgba(214,59,110,0.1);border-radius:12px;color:var(--pink);font-weight:600;text-align:center;">
+      ✓ Message sent! We'll be in touch soon.
+    </div>
+  </form>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    Letsile Tebogo
+    <span>Charitable Foundation™</span>
+  </div>
+  <div>© 2025 LTCF. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#stories">Stories</a>
+    <a href="#contact">Contact</a>
+    <a href="https://wa.me/26772919091" target="_blank">WhatsApp Us</a>
+  </div>
+</footer>
+
+<script>
+async function handleFormSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('contact-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  const form = e.target;
+  const data = new FormData(form);
+  try {
+    const res = await fetch('https://formspree.io/f/xreozrdk', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      form.reset();
+      document.getElementById('form-success').style.display = 'block';
+      btn.textContent = 'Sent!';
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+      alert('Something went wrong. Please email us directly at ltcharitablefoundation@gmail.com');
+    }
+  } catch(err) {
+    btn.disabled = false;
+    btn.textContent = 'Send Message';
+    alert('Something went wrong. Please email us directly at ltcharitablefoundation@gmail.com');
+  }
+}
+</script>
+
+</body>
+</html>
